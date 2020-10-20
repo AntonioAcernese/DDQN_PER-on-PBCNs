@@ -153,13 +153,12 @@ env = PBN_env()
 # Agent properties
 REPLAY_MEMORY_SIZE = int(1e6)  # How many last steps to keep for model training
 MIN_REPLAY_MEMORY_SIZE = 1000  # Minimum number of steps in a memory to start training
-MINIBATCH_SIZE =  256 # How many samples to use for training
+MINIBATCH_SIZE =  128 # How many samples to use for training
 UPDATE_TARGET_MODEL_EVERY = 500
 TAU = 0.005
 HIDDEN_LAYER_1_LEN = 8
-HIDDEN_LAYER_2_LEN = 8
-HIDDEN_LAYER_3_LEN = 16
-HIDDEN_LAYER_4_LEN = 8
+HIDDEN_LAYER_2_LEN = 16
+HIDDEN_LAYER_3_LEN = 8
 LEARNING_RATE = 0.03
 
 EPISODES = int(2e6)
@@ -211,7 +210,7 @@ class DQNAgent:
         model.add(Dense(HIDDEN_LAYER_1_LEN, activation="relu",input_dim=1))
         model.add(Dense(HIDDEN_LAYER_2_LEN, activation="relu",input_dim=HIDDEN_LAYER_1_LEN))
         model.add(Dense(HIDDEN_LAYER_3_LEN, activation="relu",input_dim=HIDDEN_LAYER_2_LEN))
-        model.add(Dense(HIDDEN_LAYER_4_LEN, activation="relu",input_dim=HIDDEN_LAYER_3_LEN))
+        # model.add(Dense(HIDDEN_LAYER_4_LEN, activation="relu",input_dim=HIDDEN_LAYER_3_LEN))
         model.add(Dense(env.action_space(), activation='linear'))
         model.compile(loss="mse", optimizer=Adam(lr=LEARNING_RATE), metrics=['accuracy'])
         return model
