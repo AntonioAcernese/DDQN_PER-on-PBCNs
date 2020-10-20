@@ -151,8 +151,8 @@ class PBN_env:
 env = PBN_env()
 
 # Agent properties
-REPLAY_MEMORY_SIZE = int(1e7)  # How many last steps to keep for model training
-MIN_REPLAY_MEMORY_SIZE = 10000  # Minimum number of steps in a memory to start training
+REPLAY_MEMORY_SIZE = int(1e6)  # How many last steps to keep for model training
+MIN_REPLAY_MEMORY_SIZE = 1000  # Minimum number of steps in a memory to start training
 MINIBATCH_SIZE =  256 # How many samples to use for training
 UPDATE_TARGET_MODEL_EVERY = 500
 TAU = 0.005
@@ -404,7 +404,7 @@ plt.xlabel("Training Episodes/" + str(SHOW_EVERY))
 plt.ylabel("Average Cost on " + des[0])
 
 #GENE TRENDS
-num_states = 1e5
+num_states = 1e4
 num_actions = 40
 
 x = np.zeros((num_states, num_actions, env.N_NODES))
